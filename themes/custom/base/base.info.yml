@@ -1,0 +1,22 @@
+name: Base
+type: theme
+description: 'Base theme custom'
+core: 8.x
+version: 8.x-0.1
+logo: logo.png
+libraries:
+  - base/global-styling
+
+regions:
+  top_header: 'Top header'
+  header_logo: 'Header logo'
+  navigation: 'Header navigation'
+  banner: 'Banner'
+  breadcrumb: 'Breadcrumb'
+  top_content: 'Haut de page'
+  content_left: 'Sidebar left'
+  content: 'Content'
+  content_right: 'Sidebar right'
+  bottom_content: 'Bottom content'
+  footer: 'Footer'
+  others: 'others'

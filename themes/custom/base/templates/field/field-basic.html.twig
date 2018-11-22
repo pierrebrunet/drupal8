@@ -1,0 +1,185 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_field()
+ */
+
+
+#}
+
+{#
+
+  Basic field options:
+
+  - extra_class : Just add an extra class on default markup.
+    {% set extra_class = 'my-extra-class' %}
+
+  - block_class : BEM "Block" class will prefix all classes.
+    {% set block_class = 'bem-block' %}
+
+  - force_class : Just use this class.
+    {% set force_class = 'my-class' %}
+
+  - wrap_tag : Wrapper tag, use '' to disable.
+    {% set wrap_tag = 'div' %}
+
+  - tag : Field tag, use '' to disable.
+    {% set tag = 'div' %}
+
+  - label_tag : Label tag.
+    {% set label_tag = 'div' %}
+
+  - force_label_hidden : Hide label.
+    {% set force_label_hidden = true %}
+
+#}
+
+
+{# Default classes are overridden if block_class or force_class are defined. #}
+{% set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    extra_class
+] %}
+
+{% set title_classes = ['field__label'] %}
+
+
+{# Default tags #}
+{% set wrap_tag  = 'div' %}
+{% set tag       = 'div' %}
+{% set label_tag = 'div' %}
+{% set force_label_hidden = false %}
+
+
+{# Set custom classes #}
+{% set field_class = field_name|clean_class %}
+
+{% if force_class %}
+  {% set field_class = force_class|clean_class %}
+{% endif %}
+
+{% if block_class %}
+  {# A block class is defined (BEM). #}
+  {% set field_class = block_class ~ '__' ~ field_class %}
+{% endif %}
+
+
+{% if block_class %}
+  {% set classes = [field_class] %}
+  {% set item_class = [field_class ~ '-item'] %}
+  {% set title_classes = [field_class ~ '-label'] %}
+{% endif %}
+
+{% if force_class and not block_class %}
+  {% set classes = [field_class] %}
+  {% set item_class = [field_class ~ '__item'] %}
+  {% set title_classes = [field_class ~ '__label'] %}
+{% endif %}
+
+
+{% block content %}
+
+  {# Show label #}
+
+  {% if not label_hidden and not force_label_hidden %}
+
+    {% if wrap_tag %}
+      <{{ wrap_tag }} {{ attributes.addClass(classes) }}>
+    {% endif %}
+
+    {% block label %}
+      <{{ label_tag }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ label_tag }}>
+    {% endblock %}
+
+  {% endif %}
+
+
+  {# Show field #}
+
+  {% if multiple %}
+
+    {# Multiple field #}
+
+    {% if wrap_tag %}
+      <{{ wrap_tag }} {{ attributes.addClass(classes) }}>
+    {% endif %}
+
+      {% for item in items %}
+
+        {% if tag %}
+          <{{ tag }} {{ item.attributes.addClass(item_class) }}>{{ item.content }}</{{ tag }}>
+        {% else %}
+          {{ item.content }}
+        {% endif %}
+
+      {% endfor %}
+
+    {% if wrap_tag %}
+      </{{ wrap_tag }}>{# /items #}
+    {% endif %}
+
+
+  {% else %}
+
+    {# Unique field #}
+
+    {% for item in items %}
+
+      {# If the label does not exists add wrapper class on field #}
+
+      {% if not label_hidden %}
+        {% set field_class = item_class %}
+      {% else %}
+        {% set field_class = classes %}
+      {% endif %}
+
+      {% if tag %}
+        <{{ tag }} {{ item.attributes.addClass(field_class) }}>{{ item.content }}</{{ tag }}>
+      {% else %}
+        {{ item.content }}
+      {% endif %}
+
+    {% endfor %}
+
+  {% endif %}
+
+  {% if not label_hidden and wrap_tag and not force_label_hidden %}
+    </{{ wrap_tag }}>{# /field #}
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+
+// Fonts declarations.
+//@include font-face('Open Sans', (url("../fonts/OpenSans/opensans-bold-webfont.woff2"), url("../fonts/OpenSans/opensans-bold-webfont.woff")), bold, normal);
+
+
+html {
+  font: #{em($base-font-size, 16px)}/$base-line-height $font-stack;
+  color: $base-color;
+}
+
+body {
+  background: $grey;
+  font-size: $global-font-size;
+  margin: 0;
+}
+
+a {
+  @include underline('inv');
+  color: $base-color;
+}

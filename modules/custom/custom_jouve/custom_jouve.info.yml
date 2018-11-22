@@ -1,0 +1,10 @@
+name: Custom Jouve Module
+description: Custom code for this project.
+package: Custom
+
+type: module
+core: 8.x
+
+dependencies:
+  - drupal:views
+  - paragraphs:paragraphs

@@ -1,0 +1,56 @@
+// -----------------------------------------------------------------------------
+// Colors definitions
+//
+// @see http://www.color-hex.com/color-names.html
+// -----------------------------------------------------------------------------
+
+// Default
+$grey: #414141;
+$light-gray: #ccc;
+$white: #fff;
+$black: #000;
+
+// Yellow.
+$Yellow: #f6a500;
+
+// Red.
+$red: #bf2828;
+
+// Purple.
+$purple: #2b2560;
+$light-purple: #2b2560;
+
+// Orange
+$orange: #fb8211;
+$light-orange: #f5a623;
+
+// Blue.
+$blue: #0050aa;
+$dark-blue: #062a54;
+$blue-nav: $dark-blue;
+
+
+//Messages
+$default-green: #0f0;
+
+// -----------------------------------------------------------------------------
+// Colors abstractions
+// -----------------------------------------------------------------------------
+
+// Brand color.
+$brand: $blue-nav;
+$brand-highlight: lighten($brand, 20%);
+
+// Default text.
+$base-color: $grey;
+$primary-color: $orange;
+$secondary-color: $red;
+$body-background-color: $white;
+$content-background-color: #d7d7d7;
+$headings-color: $grey;
+
+// States.
+$error: $red;
+$success: $default-green;
+$warning: $orange;
+

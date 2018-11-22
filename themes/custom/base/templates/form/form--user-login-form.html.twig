@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{% set classes = [
+  'form',
+  'form--white',
+  'form--center'] %}
+<form{{ attributes.addClass(classes) }}>
+  <div class="form__row">
+    {{ element.name }}
+  </div>
+  <div class="form__row">
+    {{ element.pass }}
+  </div>
+  <div class="form__row">
+    {{ element.actions }}
+  </div>
+  {{ element.form_build_id }} {# required #}
+  {{ element.form_id }} {# required #}
+</form>

@@ -1,0 +1,87 @@
+// Mixin button suggestions :
+// * mixin-default
+// * mixin button-default
+// * mixin button
+// * mixin button-wide
+// * mixin button-icon
+
+// placeholder button--default - common properties
+@mixin button-default {
+  @include reset-button;
+  line-height    : 20px;
+  padding        : 5.5px 20px;
+  vertical-align : middle;
+  text-align     : center;
+  font-size      : 1.6rem;
+  font-weight: 600;
+}
+
+// mixin button - generate style for button
+//  @param {String} $bg - orange
+//  @param {String} $color - white
+//  @param {String} $width - false
+//  @param {String} radius - 0
+//  @param {String} border - 0
+@mixin button($bg: $orange, $color: white, $width: false, $radius: $default_radius, $border:false) {
+  @include animation--link;
+  @if $border == false {
+    background-color : $bg;
+    border           : 1px solid $bg;
+  } @else { // border-button
+    background-color : $bg;
+    border           : $border;
+  }
+  color         : $color;
+  cursor        : pointer;
+  border-radius : $radius;
+  font-size     : $medium-font-size;
+  font-weight: 600;
+  // default             -> display: inline-block
+  // 'auto' | '100%'     -> display: block, width: 100%
+  //  custom             -> display: block, width: custom
+  @if $width != false {
+    @if $width == 'auto' or $width == '100%' {
+      display : block;
+      width   : 100%;
+    } @else {
+      display : inline-block;
+      width   : $width;
+    }
+  } @else {
+    display : inline-block;
+  }
+
+  @include hover {
+    text-decoration  : none;
+    background-color : $color;
+    color            : $bg;
+  }
+}
+
+// mixin button--wide - wide
+@mixin button-wide {
+  font-size   : 1.8rem;
+  padding: 10px 30px;
+}
+
+//mixin border button with icon
+@mixin button-icon($color: $base-color, $icon: $black-arrow, $hover-icon: $white-arrow, $hover-bg: false, $hover-color: white){
+  @include button-default;
+  @include button(transparent, $color, false, 20px, 2px solid $color);
+  &::before {
+    content: '';
+    @include sprite($icon);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  @include hover {
+    @if $hover-bg != false{
+      background-color: $hover-bg;
+    }
+    color: $hover-color;
+    &::before {
+      @include sprite-position($hover-icon);
+    }
+  }
+}

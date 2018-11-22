@@ -1,0 +1,73 @@
+// FIX Firefox positionning bug.
+.outer-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.layout-container{
+  @include layout-container;
+}
+
+/**
+ * Grid system
+ */
+//container class
+/*.container-fluid {
+  @include layout;
+}
+
+.container-fluid--direction-column {
+  flex-direction: column;
+}
+.container-fluid--align-center {
+  align-items : center;
+}
+.container-fluid--align-stretch {
+  align-items : stretch;
+}
+.container-fluid--flow-wrap {
+  flex-flow : row wrap;
+}
+.container-fluid--no-margin {
+  margin-left: 0;
+  margin-right: 0;
+}
+//default columns
+.container-fluid__col {
+  $flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.container-fluid__col--grow {
+  flex-grow: 1;
+}
+.container-fluid__col--shrink {
+  flex-shrink: 1;
+}
+//sized columns class
+.container-fluid__col-2 {
+  @include layout-column(2);
+}
+.container-fluid__col-3 {
+  @include layout-column(3);
+}
+.container-fluid__col-4 {
+  @include layout-column(4);
+}
+//columns class no-margin
+.container-fluid--no-margin {
+  $flex-basis: auto;
+}
+.container-fluid--no-margin__col-2 {
+  @include layout-column(2, 0);
+}
+.container-fluid--no-margin__col-3 {
+  @include layout-column(3, 0);
+}
+.container-fluid--no-margin__col-4 {
+  @include layout-column(4, 0);
+}*/
+
+
+
+

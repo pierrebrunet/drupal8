@@ -1,0 +1,23 @@
+
+{# Options :
+
+  {% set block_class = 'bem-block' %}
+  {% set extra_class = 'my-extra-class' %}
+  {% set force_class = 'my-class' %}
+
+  {% block content %}
+
+    {% set wrap_tag = 'div' %}
+    {% set tag = 'div' %}
+    {% set label_tag = 'div' %}
+    {% set force_label_hidden = true %}
+
+    {{ parent() }}
+
+  {% endblock %}
+
+#}
+
+{% extends "@mmh_intranet_theme/field/field-basic.html.twig" %}
+{% set block_class = 'article' %}
+{% set force_class = 'body' %}

@@ -1,0 +1,36 @@
+$footer-color: white;
+$footer-bg: $blue;
+$footer-ln: 40px;
+$footer-logo-size: 200px;
+
+.footer {
+  margin-top: $site-gutter;
+  color: $footer-color;
+  line-height: $footer-ln;
+  border-top: 1px solid $footer-color;
+  padding: 15px 0;
+  background: red;
+
+
+  p {
+    margin: 0;
+    line-height: $footer-ln;
+  }
+
+  a {
+    color: $footer-color;
+  }
+}
+//set container wrapper
+.footer__layout-container{
+  @include layout-container;
+  @include debug(yellow, yellow);
+}
+
+//@mixin layout($col-count: 2, $margin: false, $wrap: nowrap, $selector: 'div')
+.region--footer{
+  @include layout(2, $site-gutter, nowrap, '.block--footer', 'center');
+}
+.block--footer{
+  @include debug(green,green);
+}

@@ -1,0 +1,7 @@
+custom_jouve.content:
+  path: '/jouve'
+  defaults:
+    _controller: '\Drupal\custom_jouve\Controller\JouveController::content'
+    _title: 'Hi Jouve'
+  requirements:
+    _permission: 'access content'

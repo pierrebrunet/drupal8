@@ -1,0 +1,73 @@
+// Mixin block / atome suggestions :
+// * headings
+// * underline--custom ($width: 30px, $height: 4px, $color: $red, $position: left)
+
+//  Headings
+@mixin headings {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @content;
+  }
+}
+
+//  mixin underline--custom - add a custom underline
+//  @param {String} $width
+//  @param {String} $height
+//  @param {String} $color
+//  @param {String} position
+@mixin text-underline-custom($width: 30px, $height: 4px, $color: $orange, $position: left) {
+  &::after {
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    background-color: $color;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: $position;
+  }
+}
+
+@mixin text-small($font-weight: 500) {
+  font-size: $small-text-font-size;
+  font-weight: $font-weight;
+}
+
+@mixin text-big($font-weight: normal) {
+  font-size: $bigger-text-font-size;
+  font-weight: ($font-weight: normal);
+}
+
+@mixin text-summary {
+  font-size: $global-font-size;
+  color: $base-color;
+  line-height: 1.25em;
+}
+
+@mixin text-tag($color: $orange, $radius: $default_radius) {
+  display: inline-block;
+  background-color: $color;
+  color: white;
+  padding: 5px 15px;
+  line-height: 20px;
+  border-radius: $radius;
+  text-align: center;
+  a {
+    color: white
+  }
+}
+
+@mixin heading-with-rect {
+  font-size : 1.8rem;
+  font-weight : normal;
+  color: $blue;
+  margin: 1em 0 1.5em;
+
+  @include rectangle($orange);
+
+  a {
+    color: $blue;
+  }
+}

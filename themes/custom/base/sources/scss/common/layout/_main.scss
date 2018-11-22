@@ -1,0 +1,46 @@
+/**
+ * Main layout region
+ */
+main {
+  background: $body-background-color;
+  @include layout-container;
+}
+
+//min-wdth
+@include mq-from('sm')
+{
+
+  .main__layout-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+  }
+
+  .region--content-left,
+  .region--content-right {
+    width: 300px;
+    flex: 0 0 300px;
+  }
+
+  .region--content {
+    flex: 0 1 100%;
+  }
+
+}
+
+/*.page__navigation {
+
+  @include mq-from('sm') {
+    width: $side-menu-width;
+    max-width: $side-menu-width;
+    z-index: 2;
+    position: fixed;
+  }
+
+}*/
+
+/*.page__content {
+
+}*/
+
+

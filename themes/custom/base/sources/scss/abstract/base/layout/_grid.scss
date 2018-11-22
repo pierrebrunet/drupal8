@@ -1,0 +1,59 @@
+// Centered layout.
+@mixin layout-container{
+  @include clearfix;
+  background: white;
+  @include debug;
+  width: auto;
+  max-width: $max-site-width;
+  margin: 0 $site-gutter/2;
+
+  @include mq-from('lg') {
+    margin: 0 auto;
+  }
+}
+
+// Make columns.
+//
+// @include layout((
+//   'col-count': 2,
+//   'margin': gap,
+//   'wrap': wrap
+//   'selector': div
+// )...);
+
+@mixin layout($col-count: 2, $margin: false, $wrap: 'nowrap', $selector: 'div', $align-items: 'flex-start') {
+  display: flex;
+  flex-flow: row #{$wrap};
+  justify-content: space-between;
+  align-items: $align-items;
+  align-content: $align-items;
+
+  > #{$selector} {
+    flex-basis: calc(100% / #{$col-count} - #{$margin});
+    flex: 0 0 auto;
+    @if $margin {
+      width: calc(100% / #{$col-count } - #{$margin});
+      margin-left: $margin;
+      margin-bottom: $margin;
+    } @else {
+      width: calc(100% / #{$col-count });
+    }
+  }
+
+  // Add final element for last row alignement.
+  @if $wrap == 'wrap' {
+    .filler,
+    &:after {
+      content: '';
+      flex-basis: 100% / $col-count - $margin;
+    }
+
+  } @else {
+
+    &:after {
+      display: none;
+    }
+
+  }
+
+}

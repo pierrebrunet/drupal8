@@ -1,0 +1,15 @@
+
+example.default_controller_get_config:
+  path: '/example/getconfig'
+  defaults:
+    _controller: '\Drupal\example\Controller\DefaultController::getConfig'
+    _title: 'getConfig'
+  requirements:
+    _permission: 'access content'
+example.default_controller_hello:
+  path: '/example/hello/{name}'
+  defaults:
+    _controller: '\Drupal\example\Controller\DefaultController::hello'
+    _title: 'getTitle'
+  requirements:
+    _permission: 'access content'

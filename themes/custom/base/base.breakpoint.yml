@@ -1,0 +1,25 @@
+base.xs:
+  label: Extra small
+  mediaQuery: 'all and (max-width: 767px)'
+  weight: '1'
+  multipliers:
+  - '1x'
+base.small:
+  label: Small
+  mediaQuery: 'all and (min-width: 768px) and (max-width: 991px)'
+  weight: '2'
+  multipliers:
+  - '1x'
+base.medium:
+  label: Medium
+  mediaQuery: 'all and (min-width: 992px) and (max-width: 1199px)'
+  weight: '3'
+  multipliers:
+  - '1x'
+base.large:
+  label: Large
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: '4'
+  multipliers:
+  - '1x'
+

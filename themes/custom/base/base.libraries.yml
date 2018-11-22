@@ -1,0 +1,19 @@
+global-styling:
+  css:
+    theme:
+      assets/css/common.css: {}
+      assets/css/print.css: { media: print }
+  dependencies:
+  - core/jquery
+  js:
+    assets/js/app.js: {}
+
+home:
+  css:
+    theme:
+      assets/css/contrib/home.css: {}
+#  js:
+#    assets/js/contrib/home.js: {}
+#  dependencies:
+#  - core/jquery
+#  - core/jquery.once

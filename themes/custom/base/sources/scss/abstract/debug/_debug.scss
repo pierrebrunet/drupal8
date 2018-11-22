@@ -1,0 +1,7 @@
+@mixin debug($color: red, $bg-color: 'false') {
+  border : 1px solid $color;
+
+  @if $bg-color != 'false' {
+    background-color : $bg-color;
+  }
+}

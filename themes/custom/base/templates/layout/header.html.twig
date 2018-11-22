@@ -1,0 +1,16 @@
+<div class="header">
+  <header class="header__top">
+    <div class="layout-container">
+      {% if regions %}
+        {{ page.top_header }}
+      {% endif %}
+    </div>
+  </header>
+  <div class="header__bottom" role="banner">
+    <div class="header__bottom__layout-container">
+      {% if regions %}
+        {{ page.navigation }}
+      {% endif %}
+    </div>
+  </div>
+</div>

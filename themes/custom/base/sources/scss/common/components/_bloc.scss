@@ -1,0 +1,73 @@
+// Mixin block / atome suggestions :
+// * block-white
+
+// CSS list suggestions :
+// * block
+// * block__image
+// * block__date
+// * block__title
+// * block__text
+// * block__content
+// * block__content
+// * block__category
+
+//custom block
+// * block--custom-default, block--custom-white
+// * block--custom-transparent
+// * block--orange-border
+// * block--black-border
+
+/**
+ * Drupal blocks
+ */
+
+/* Default */
+%block-default {
+  padding: $site-gutter;
+  margin-bottom: $site-gutter;
+}
+
+.block {
+  @extend %block-default;
+}
+
+
+%block-title {
+  margin: 0 0 $site-gutter;
+  color: $base-color;
+  font-size: 2rem;
+  @include text-underline-custom;
+}
+
+.block__title {
+  @extend %block-title;
+}
+
+
+/* Block white */
+%block-white {
+  background: $white;
+  padding: $site-gutter;
+  margin-bottom: $site-gutter;
+}
+
+.block--white,
+.block--custom-default,
+.block--custom-white {
+  @extend %block-white;
+}
+
+/* Block custom transparent */
+.block--custom-transparent {
+  background: none;
+}
+
+/* Block orange border */
+.block--orange-border {
+  border: 1px solid $orange;
+}
+
+/* Block black border */
+.block--black-border {
+  border: 1px solid $base-color;
+}
